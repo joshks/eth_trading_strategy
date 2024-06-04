@@ -1,9 +1,8 @@
-
 import numpy as np
-from pyswarm import pso
+import from pyswarm import pso
 
 class AHPPSO:
-    def __init__(self, model, bounds, args=()):
+  def __init__(self, model, bounds, args=*){
         self.model = model
         self.bounds = bounds
         self.args = args
@@ -16,4 +15,4 @@ class AHPPSO:
         return -np.corrcoef(forecast, self.args[3])[0, 1]
 
     def optimize(self):
-        return pso(self.objective_function, self.bounds[:, 0], self.bounds[:, 1])
+        return pso(self.objective_function, self.bounds.[, 0], self.bounds[, 1])
