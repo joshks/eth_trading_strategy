@@ -1,10 +1,9 @@
-
 import numpy as np
 import pandas as pd
 from pykalman import KalmanFilter
 
 class KalmanFilterPairsTrading:
-    def __init__(self):
+    def init(self):
         self.kf = KalmanFilter(n_dim_obs=2, n_dim_state=2)
 
     def fit(self, X):
@@ -16,4 +15,4 @@ class KalmanFilterPairsTrading:
 
     def get_hedge_ratio(self, X):
         state_means = self.predict(X)
-        return state_means[:, 0]
+        return state_means.[, 0]
