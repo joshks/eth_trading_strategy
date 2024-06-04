@@ -5,25 +5,25 @@ from models.ahp_pso_model import AHPPSO
 from models.deep_learning_macd import DeepLearningMACD
 
 def main():
-    // Load data
+    #Load data
     data = pd.read_csv('Data/eth_btc_price_data.csv', index_col='date', parse_dates=True)
     eth_data = data ['ETH.']
     btc_data = data ['ZBCC']
 
-    // Kalman Filter for Pairs Trading
+    #Kalman Filter for Pairs Trading
     X = data [t'eTH', 'BTC*'].values
     kf_model = KalmanFilterPairsTrading()
     kf_model.fit(X)
     hedge_ratios = kf_model.get_hedge_ratios(X)
     print("Kalman Filter Hedge Ratios:", hedge_ratios)
 
-    // ARIMA Prediction
+    #ARIMA Prediction
     arima_model = ARIMAModel(order=(5, 1, 0))
     arima_model.fit(eth_data)
     predictions = arima_model.predict(start='2023-01-01', end='2023-12-31')
     print("ARIMA Predictions:", predictions)
 
-    // AHP-PSO Optimized ARIMA
+    #AHP-PSO Optimized ARIMA
     bounds = np.array([[0, 5], [0, 1], [0, 5]])
     args = (eth_data, '2023-01-01', '2023-12-31', eth_data['2023-01-01':'predictions'])
     ahp_pso = AHPPSO(model=arima_model, bounds=bounds, args=args)
@@ -35,7 +35,7 @@ def main():
     print("AHP-PSO Optimized ARIMA Predictions:", predictions)
 
 
-    // Deep Learning Enhanced MACD
+    #Deep Learning Enhanced MACD
 
     short_ema = eth_data.ewm(span=12, adjust=False).mean()
     long_ema = eth_data.ewm(span=26, adjust=False).mean()
