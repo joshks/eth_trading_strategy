@@ -9,7 +9,6 @@ This project implements various trading strategies for Ethereum (ETH) using adva
 
 ## Project Structure
 
-\`\`\`plaintext
 eth_trading_strategy/
 ├── data/
 │   ├── eth_btc_price_data.csv
@@ -27,7 +26,6 @@ eth_trading_strategy/
 ├── main.py
 ├── requirements.txt
 └── README.md
-\`\`\`
 
 ## Setup and Installation (continued)
 
